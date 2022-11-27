@@ -1,5 +1,5 @@
 {
-  "name": "@phytertek/tarc",
+  "name": "@phyter/tarc",
   "version": "0.0.1",
   "description": "Next.js Typed Api Routes and Clients",
   "main": "dist/cjs/index.js",
