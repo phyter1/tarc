@@ -2,13 +2,16 @@
   "name": "@phytertek/tarc",
   "version": "0.0.1",
   "description": "Next.js Typed Api Routes and Clients",
-  "main": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run rollup",
+    "rollup": "rm -rf dist && rollup -c"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/phyter1/troute.git"
+    "url": "git+https://github.com/phyter1/tarc.git"
   },
   "keywords": [
     "Next.js",
@@ -20,7 +23,33 @@
   "author": "Ryan Lowe <ryan@phytertek.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/phyter1/troute/issues"
+    "url": "https://github.com/phyter1/tarc/issues"
   },
-  "homepage": "https://github.com/phyter1/troute#readme"
+  "homepage": "https://github.com/phyter1/tarc#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.1",
+    "@rollup/plugin-terser": "^0.1.0",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "next": "^13.0.5",
+    "react": "^18.2.0",
+    "recoil": "^0.7.6",
+    "rollup": "^3.4.0",
+    "rollup-plugin-dts": "^5.0.0",
+    "rollup-plugin-generate-package-json": "^3.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "typescript": "^4.9.3",
+    "zod": "^3.19.1"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "recoil": "^0.7.6",
+    "zod": "^3.19.1"
+  },
+  "dependencies": {
+    "query-string": "^7.1.1"
+  }
 }

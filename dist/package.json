@@ -1,0 +1,30 @@
+{
+  "name": "@phytertek/tarc",
+  "description": "Next.js Typed Api Routes and Clients",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phyter1/troute.git"
+  },
+  "keywords": [
+    "Next.js",
+    "React",
+    "Typescript",
+    "Zod",
+    "Recoil"
+  ],
+  "author": "Ryan Lowe <ryan@phytertek.io>",
+  "license": "MIT",
+  "homepage": "https://github.com/phyter1/troute#readme",
+  "main": "./cjs/index.js",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "recoil": "^0.7.6",
+    "zod": "^3.19.1"
+  },
+  "dependencies": {
+    "query-string": "^7.1.1"
+  }
+}
