@@ -1,0 +1,26 @@
+{
+  "name": "troute",
+  "version": "0.0.1",
+  "description": "Next.js Typed Api Routes and Clients",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phyter1/troute.git"
+  },
+  "keywords": [
+    "Next.js",
+    "React",
+    "Typescript",
+    "Zod",
+    "Recoil"
+  ],
+  "author": "Ryan Lowe <ryan@phytertek.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phyter1/troute/issues"
+  },
+  "homepage": "https://github.com/phyter1/troute#readme"
+}
