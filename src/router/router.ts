@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
 import type {
+  Client,
   ClientMap,
   CreateContext,
   Handler,
@@ -154,14 +155,14 @@ const Router = <C extends ZO>({
       };
     };
 
-    const client = () => {
+    const client = (): Client<I, O> => {
       const c = (ClientMap.get(method) ?? ClientMap.get("post")!)({
         apiUrl,
         path,
         inputShape,
         outputShape,
       });
-      return c;
+      return c as any;
     };
 
     return {

@@ -1,5 +1,5 @@
 import type { NextApiHandler } from "next";
-import type { ClientMap, CreateContext, Handler, HandlerMap, Middleware, ZO } from "../types/coreTypes";
+import type { Client, ClientMap, CreateContext, Handler, HandlerMap, Middleware, ZO } from "../types/coreTypes";
 import { z } from "zod";
 declare const ClientMap: ClientMap<ZO, ZO>;
 declare const HandlerMap: HandlerMap<ZO, ZO, ZO>;
@@ -47,7 +47,7 @@ declare const Router: <C extends ZO>({ contextShape, apiUrl, }: {
         }>[k_3]; } : never>], z.ZodUnknown>, z.ZodPromise<O>>;
         contextShape: C;
         handler: (h: Handler<C, I, O>) => NextApiHandler<z.TypeOf<O>>;
-        client: () => import("../types/coreTypes").Client<ZO, ZO>;
+        client: () => Client<I, O>;
         middleware: (...fns: Middleware[]) => void;
     };
     context: (create: CreateContext<z.TypeOf<C>>) => void;
