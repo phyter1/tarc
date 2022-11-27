@@ -1,5 +1,5 @@
 {
-  "name": "troute",
+  "name": "@phytertek/tarc",
   "version": "0.0.1",
   "description": "Next.js Typed Api Routes and Clients",
   "main": "index.js",
