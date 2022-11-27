@@ -1,9 +1,7 @@
 import type { FC, ReactNode } from "react";
 import { Clients } from "../types/coreTypes";
 import type { Router } from "../router";
-import React, { createContext, useEffect, useRef } from "react";
-
-const RouterContext = createContext<undefined>(undefined);
+import React, { useEffect, useRef } from "react";
 
 const RouterContextProvider: FC<{
   children: ReactNode;
@@ -17,11 +15,7 @@ const RouterContextProvider: FC<{
       router.methodClients(clients);
     }
   }, [router, clients]);
-  return (
-    <RouterContext.Provider value={undefined}>
-      {children}
-    </RouterContext.Provider>
-  );
+  return <>{children}</>;
 };
 
 export default RouterContextProvider;
