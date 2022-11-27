@@ -1,5 +1,5 @@
 {
-  "name": "@phytertek/tarc/router",
+  "name": "@phyter/tarc/router",
   "private": true,
   "main": "../cjs/index.js",
   "module": "./index.js",

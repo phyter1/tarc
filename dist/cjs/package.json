@@ -1,10 +1,10 @@
 {
-  "name": "@phytertek/tarc",
+  "name": "@phyter/tarc",
   "description": "Next.js Typed Api Routes and Clients",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/phyter1/troute.git"
+    "url": "git+https://github.com/phyter1/tarc.git"
   },
   "keywords": [
     "Next.js",
@@ -15,7 +15,7 @@
   ],
   "author": "Ryan Lowe <ryan@phytertek.io>",
   "license": "MIT",
-  "homepage": "https://github.com/phyter1/troute#readme",
+  "homepage": "https://github.com/phyter1/tarc#readme",
   "main": "./cjs/index.js",
   "module": "./index.js",
   "types": "./index.d.ts",
