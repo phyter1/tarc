@@ -46,10 +46,10 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "recoil": "^0.7.6",
     "zod": "^3.19.1"
   },
   "dependencies": {
+    "recoil": "^0.7.6",
     "query-string": "^7.1.1"
   }
 }
