@@ -139,14 +139,14 @@ const Router = <C extends ZO>({
       };
     };
 
-    const client = (): Client<I, O> => {
+    const client = () => {
       const c = (ClientMap.get(method) ?? ClientMap.get("post")!)({
         apiUrl,
         path,
         inputShape,
         outputShape,
       });
-      return c as any;
+      return c as unknown as Client<I, O>;
     };
 
     return {

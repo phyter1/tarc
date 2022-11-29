@@ -62,7 +62,6 @@ const routeData = selectorFamily<any | null, string>({
 });
 
 const useCachedRoute = <R extends Omit<Route, "handler">>(route: R) => {
-  type I = Parameters<ReturnType<R["client"]>>[0];
   type O = Awaited<ReturnType<Awaited<ReturnType<R["client"]>>>>;
   const name = route.apiUrl + route.path;
   const client = route.client();
@@ -70,11 +69,11 @@ const useCachedRoute = <R extends Omit<Route, "handler">>(route: R) => {
   const [error, setError] = useRecoilState(routeError(name));
   const [loading, setLoading] = useRecoilState(routeLoading(name));
   const callRoute = useCallback(
-    async (input: I) => {
+    async (input: Parameters<typeof client>[0]) => {
       setLoading(true);
       let res: O;
       try {
-        res = (await client(input)) as any;
+        res = (await client(input)) as O;
         setData(res);
       } catch (e: any) {
         setError(e);

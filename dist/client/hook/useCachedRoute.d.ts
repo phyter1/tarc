@@ -10,7 +10,9 @@ declare const useCachedRoute: <R extends Omit<{
     }>;
     client: () => import("../../types").Client<import("zod/lib/types").AnyZodObject, import("zod/lib/types").AnyZodObject>;
     middleware: (...fns: import("../../types").Middleware[]) => void;
-}, "handler">>(route: R) => readonly [(input: Parameters<ReturnType<R["client"]>>[0]) => Promise<ReturnType<Awaited<ReturnType<R["client"]>>>>, {
+}, "handler">>(route: R) => readonly [(input: {
+    [x: string]: any;
+}) => Promise<ReturnType<Awaited<ReturnType<R["client"]>>>>, {
     readonly data: Awaited<ReturnType<Awaited<ReturnType<R["client"]>>>>;
     readonly error: string | null;
     readonly loading: boolean;
