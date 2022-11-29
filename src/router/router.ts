@@ -5,6 +5,7 @@ import type {
   CreateContext,
   Handler,
   HandlerMap,
+  Method,
   Middleware,
   ZO,
 } from "../types/coreTypes";
@@ -73,7 +74,7 @@ const HandlerMap: HandlerMap<ZO, ZO, ZO> = new Map([
 
 const Router = <C extends ZO>({
   contextShape,
-  apiUrl = "/api/",
+  apiUrl = "/api",
 }: {
   contextShape: C;
   apiUrl?: string;
@@ -104,7 +105,7 @@ const Router = <C extends ZO>({
     inputShape,
     outputShape,
   }: {
-    method: "get" | "post";
+    method: Method;
     path: string;
     inputShape: I;
     outputShape: O;
@@ -114,23 +115,6 @@ const Router = <C extends ZO>({
     const middleware = (...fns: Middleware[]) => {
       routeMiddleware = [...routeMiddleware, ...fns];
     };
-
-    const clientShape = z
-      .function()
-      .args(inputShape)
-      .returns(z.promise(outputShape));
-
-    const serviceShape = z
-      .function()
-      .args(
-        z.object({
-          input: inputShape,
-          context: contextShape,
-          req: z.any(),
-          res: z.any(),
-        })
-      )
-      .returns(z.promise(outputShape));
 
     const methodHandler = HandlerMap.get(method) ?? HandlerMap.get("post")!;
 
@@ -171,8 +155,6 @@ const Router = <C extends ZO>({
       routeMiddleware,
       inputShape,
       outputShape,
-      clientShape,
-      serviceShape,
       contextShape,
       handler,
       client,

@@ -1,10 +1,5 @@
 import { useCallback } from "react";
-import {
-  atomFamily,
-  DefaultValue,
-  selectorFamily,
-  useRecoilState,
-} from "recoil";
+import { atomFamily, selectorFamily, useRecoilState } from "recoil";
 import { Route } from "../../types";
 
 type UseRoute = {
@@ -12,32 +7,12 @@ type UseRoute = {
   error: string | null;
   data: any | null;
 };
-const ls = () => {
-  try {
-    return localStorage;
-  } catch {
-    return;
-  }
-};
+
 const routeCache = atomFamily<UseRoute, string>({
   key: "routeCache",
   default: {} as any,
-  effects: [
-    ({ setSelf, onSet, node }) => {
-      const item = ls()?.getItem(node.key);
-      if (item) {
-        setSelf(JSON.parse(item));
-      }
-      onSet((newItem) => {
-        if (newItem instanceof DefaultValue) {
-          ls()?.removeItem(node.key);
-        } else {
-          ls()?.setItem(node.key, JSON.stringify(newItem));
-        }
-      });
-    },
-  ],
 });
+
 const routeLoading = selectorFamily<boolean, string>({
   key: "routeLoading",
   get:
@@ -53,6 +28,7 @@ const routeLoading = selectorFamily<boolean, string>({
       }));
     },
 });
+
 const routeError = selectorFamily<string | null, string>({
   key: "routeError",
   get:
@@ -68,6 +44,7 @@ const routeError = selectorFamily<string | null, string>({
       }));
     },
 });
+
 const routeData = selectorFamily<any | null, string>({
   key: "routeData",
   get:
@@ -83,6 +60,7 @@ const routeData = selectorFamily<any | null, string>({
       }));
     },
 });
+
 const useCachedRoute = <R extends Route>(route: R) => {
   type I = Parameters<ReturnType<R["client"]>>[0];
   type O = Awaited<ReturnType<Awaited<ReturnType<R["client"]>>>>;
