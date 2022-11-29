@@ -3,5 +3,8 @@
   "private": true,
   "main": "../cjs/index.js",
   "module": "./index.js",
-  "types": "./index.d.ts"
+  "types": "./index.d.ts",
+  "dependencies": {
+    "recoil": "^0.7.6"
+  }
 }
