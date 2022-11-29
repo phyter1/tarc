@@ -1,6 +1,6 @@
 {
   "name": "@phyter/tarc",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Next.js Typed Api Routes and Clients",
   "main": "dist/cjs/index.js",
   "module": "dist/index.js",

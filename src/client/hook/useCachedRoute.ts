@@ -61,7 +61,7 @@ const routeData = selectorFamily<any | null, string>({
     },
 });
 
-const useCachedRoute = <R extends Route>(route: R) => {
+const useCachedRoute = <R extends Omit<Route, "handler">>(route: R) => {
   type I = Parameters<ReturnType<R["client"]>>[0];
   type O = Awaited<ReturnType<Awaited<ReturnType<R["client"]>>>>;
   const name = route.apiUrl + route.path;
