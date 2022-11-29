@@ -2,6 +2,7 @@ import type { FC, ReactNode } from "react";
 import { Clients } from "../types/coreTypes";
 import type { Router } from "../router";
 import React, { useEffect, useRef } from "react";
+import { RecoilRoot } from "recoil";
 
 const RouterContextProvider: FC<{
   children: ReactNode;
@@ -15,7 +16,7 @@ const RouterContextProvider: FC<{
       router.methodClients(clients);
     }
   }, [router, clients]);
-  return <>{children}</>;
+  return <RecoilRoot>{children}</RecoilRoot>;
 };
 
 export default RouterContextProvider;
