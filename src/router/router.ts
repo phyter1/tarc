@@ -17,7 +17,7 @@ const ClientMap: ClientMap<ZO, ZO> = new Map([
     "get",
     ({ apiUrl, path, inputShape, outputShape }) =>
       async (input) => {
-        const reqInput = inputShape.parse(input);
+        const reqInput = await inputShape.safeParseAsync(input);
         const output = await fetch(
           apiUrl +
             path +
@@ -30,14 +30,14 @@ const ClientMap: ClientMap<ZO, ZO> = new Map([
             },
           }
         );
-        return outputShape.parse(await output.json());
+        return await outputShape.safeParseAsync(await output.json());
       },
   ],
   [
     "post",
     ({ apiUrl, path, inputShape, outputShape }) =>
       async (input) => {
-        const reqInput = inputShape.parse(input);
+        const reqInput = await inputShape.safeParseAsync(input);
         const res = await fetch(apiUrl + path, {
           method: "POST",
           headers: {
@@ -46,7 +46,7 @@ const ClientMap: ClientMap<ZO, ZO> = new Map([
           body: JSON.stringify(reqInput),
         });
         const reqOutput = await res.json();
-        return outputShape.parse(reqOutput);
+        return await outputShape.safeParseAsync(reqOutput);
       },
   ],
 ]);
@@ -56,18 +56,18 @@ const HandlerMap: HandlerMap<ZO, ZO, ZO> = new Map([
     "get",
     ({ inputShape, outputShape, context, handler }) =>
       async (req, res) => {
-        const input = inputShape.parse(req.query);
+        const input = await inputShape.safeParseAsync(req.query);
         const output = await handler({ req, res, context, input });
-        res.status(200).json(outputShape.parse(output));
+        res.status(200).json(await outputShape.safeParseAsync(output));
       },
   ],
   [
     "post",
     ({ inputShape, outputShape, context, handler }) =>
       async (req, res) => {
-        const input = inputShape.parse(req.body);
+        const input = await inputShape.safeParseAsync(req.body);
         const output = await handler({ req, res, context, input });
-        res.status(200).json(outputShape.parse(output));
+        res.status(200).json(await outputShape.safeParseAsync(output));
       },
   ],
 ]);
